@@ -1,0 +1,31 @@
+<div *ngIf="renderUser()"> 
+<form>
+    Password:
+    <br/>
+    <input type="password" name="password" [(ngModel)]="user.password">
+    <br>
+    Firstname:
+    <br>
+    <input type="Text" name="firstname" [(ngModel)]="user.firstname">
+    <br>
+    Lastname:
+    <br>
+    <input type="Text" name="lastname" [(ngModel)]="user.lastname">
+    <br>
+    Address:
+    <br>
+    <input type="Text" name="address" [(ngModel)]="user.address">
+    <br>
+    Phone number:
+    <br>
+    <input type="Text" name="phone" [(ngModel)]="user.phoneNumber">
+    <br>
+    Mail adress:
+    <br>
+    <input type="Text" name="mail" [(ngModel)]="user.email">
+    <br>
+    <button (click)="change()">Change</button>
+    <br>
+    <button (click)="back()">Back</button>
+</form>
+</div>

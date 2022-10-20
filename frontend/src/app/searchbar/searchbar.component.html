@@ -1,0 +1,13 @@
+<div>
+<div style="text-align:left;">
+    <span *ngIf="logged"> 
+       <img [src]="image" *ngIf="img" height="40px" (click)="goProfil()">
+       <img [src]="imageDefault" *ngIf="!img" height="40px" (click)="goProfil()">
+    </span> 
+    <button (click)="goHome()">Home</button>
+<span style='float:right;'>
+    Search: <input type="text" [(ngModel)]="param"> <button (click)="search()">Search</button>
+</span>
+</div>
+</div>
+<hr>

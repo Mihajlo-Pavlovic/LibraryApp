@@ -1,0 +1,43 @@
+<div *ngIf="renderUser()">
+<table>
+    <tr>
+        <td>Username</td>
+        <td>Edit</td>
+        <td>Delete</td>
+    </tr>
+    <tr *ngFor="let user of users">
+        <td>{{user.username}}</td>
+        <td><button (click)="editUser(user.username)">Edit</button></td>
+        <div *ngIf="user.borrowing.length!=0">
+            <td><button disabled>Delete</button></td>
+        </div>
+        <div *ngIf="user.borrowing.length==0">
+            <td><button (click)="deleteUser(user.username)">Delete</button></td>
+        </div>
+    </tr>
+</table>
+    
+</div>
+<br/>
+<div *ngIf="renderBook()">
+<table>
+    <tr>
+        <td>Book</td>
+        <td>Edit</td>
+        <td>Delete</td>
+    </tr>
+    <tr *ngFor="let book of books">
+        <td>{{book.name}}</td>
+        <td><button (click)="editBook(book.id)">Edit</button></td>
+        <div *ngIf="renderBookDelete(book.id) == false">
+            <td><button disabled>Delete</button></td>
+        </div>
+        <div *ngIf="renderBookDelete(book.id) == true">
+            <td><button (click)="deleteBook(book.id)">Delete</button></td>
+        </div>
+    </tr>
+</table>
+</div>
+<div *ngIf="!renderBook()">
+<h3>Unauthorized access</h3>
+</div>

@@ -1,0 +1,26 @@
+<table>
+  <tr *ngFor="let book of books">
+    <table>
+      <tr>
+        <td>
+          <img [src]="book.image" height="100">
+        </td>
+        <td>
+          Naziv : {{book.name}}
+          <br>
+          Autor: {{book.authors}}
+          <br>
+          Kategorija: {{book.category}}
+          <br>
+          Izdavac: {{book.publisher}}
+          <br>
+          Godina: {{book.year}}
+          <br>
+          Jezik:{{book.language}}
+          <br>
+          <button (click)="goToBook(book.id)">Visit</button>
+        </td>
+      </tr>
+    </table>
+  </tr>
+</table>

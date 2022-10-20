@@ -1,0 +1,28 @@
+
+<app-top-books></app-top-books>
+<h3>Menu:</h3>
+<div *ngIf="privilegija == 'logedout' " align="center">
+
+    <button (click)="router.navigate(['login'])">Login</button>
+    <br>
+    <button (click)="router.navigate(['register'])">Register</button>
+</div>
+<div *ngIf="privilegija == 'user' || privilegija == 'moderator'" align="center">
+    <app-bookday></app-bookday>
+
+    <button (click)="router.navigate(['password'])">Change password</button>
+</div>
+<div *ngIf="privilegija == 'admin' || privilegija == 'moderator'" align="center">
+
+    <br>
+    <button (click)="router.navigate(['addbook'])">Add book</button>
+    <br>
+    <button (click)="router.navigate(['adminedit'])">Еdit books or users</button>
+    <br>
+
+</div>
+<div *ngIf="privilegija == 'admin'" align="center">
+    <button (click)="router.navigate(['regRequest'])">Review registration request</button>
+    <br>
+    <button (click)="router.navigate(['setDays'])">Change loan days</button>
+</div>

@@ -1,0 +1,38 @@
+<form>
+    Username: 
+    <br>
+    <input type="Text" name="username" [(ngModel)]="username">
+    <br/>
+    Password:
+    <br/>
+    <input type="password" name="password1" [(ngModel)]="password1">
+    <br>
+    Reeneter password:
+    <br/>
+    <input type="password" name="password2" [(ngModel)]="password2">
+    <br>
+    Firstname:
+    <br>
+    <input type="Text" name="firstname" [(ngModel)]="firstname">
+    <br>
+    Lastname:
+    <br>
+    <input type="Text" name="lastname" [(ngModel)]="lastname">
+    <br>
+    Address:
+    <br>
+    <input type="Text" name="address" [(ngModel)]="address">
+    <br>
+    Phone number:
+    <br>
+    <input type="Text" name="phone" [(ngModel)]="phone">
+    <br>
+    Mail adress:
+    <br>
+    <input type="Text" name="mail" [(ngModel)]="mail">
+    <br>
+    <button (click)="register()">Submit</button>
+</form>
+{{message}}
+        
+        

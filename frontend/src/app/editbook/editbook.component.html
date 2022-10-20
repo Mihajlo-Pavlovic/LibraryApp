@@ -1,0 +1,49 @@
+<div *ngIf="renderBook()">
+Name:
+<input type="text" [(ngModel)]="book.name">
+<br>
+Authors:
+<input type="text" [(ngModel)]="authors">
+<br>
+Categories:
+    <select name="selectedCat" [(ngModel)]="zanrovi" multiple>
+        <option *ngFor="let cat of zanroviList" [ngValue]="cat.zanr">{{cat.zanr}}</option>
+    </select>
+    <br>
+
+Publisher:
+<input type="text" [(ngModel)]="book.publisher">
+<br>
+Year:
+<input type="text" [(ngModel)]="book.year">
+<br>
+Language:
+<input type="text" [(ngModel)]="book.language">
+<br>
+Image:
+<input  type="file" (change)="readUrl($event)" name="image">
+<br>
+Count:
+<input type="text" [(ngModel)]="book.count">
+<br>
+{{message}}
+<br>
+Comments:
+<table>
+    <tr>
+        <td>Author:</td>
+        <td>Comment</td>
+    </tr>
+    <tr *ngFor="let c of book.comments">
+        <td>{{c.username}}</td>
+        <td>{{c.comment}}</td>
+        <td><button (click)="deleteComment(book.id, c.username)">Delete</button></td>
+    </tr>
+</table>
+<button (click)="editBook()">Edit book</button>
+<br>
+<button (click)="back()">Back</button>
+</div>
+<div *ngIf="!renderBook()">
+<h3>Unauthorised access</h3>
+</div>

@@ -1,0 +1,44 @@
+<div *ngIf="render()">
+<form>
+    Book name:
+    <br>
+    <input type="text" name="name" [(ngModel)]="name" required>
+    <br>
+    Authors:
+    <br>
+    <input type="text" name="authors" [(ngModel)]="authors" required>
+    <br>
+    Categorys:
+    <select name="selectedCat" [(ngModel)]="categories" multiple required>
+        <option *ngFor="let cat of zanroviList" [ngValue]="cat.zanr">{{cat.zanr}}</option>
+    </select>
+    <br>
+
+    <br>
+    Publisher:
+    <br>
+    <input type="text" name="publisher" [(ngModel)]="publisher" >
+    <br>
+    Year:
+    <br>
+    <input type="text" name="year" [(ngModel)]="year" >
+    <br>
+    Language:
+    <br>
+    <input type="text" name="language" [(ngModel)]="language" >
+    <br>
+    Image:
+    <br>
+    <input  type="file" (change)="readUrl($event)" name="image">
+    <br>
+    Count:
+    <br>
+    <input type="text" name="count" [(ngModel)]="count">
+    <br>
+    <button (click)="addBook()">Add book</button>
+</form>
+</div>
+<div *ngIf="!render()">
+<h3>Unauthorized access</h3>
+</div>
+{{message}}

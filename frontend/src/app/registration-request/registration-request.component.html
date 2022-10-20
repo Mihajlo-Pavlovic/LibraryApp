@@ -1,0 +1,12 @@
+<div class="div-big">
+    <table>
+        <tr *ngFor="let req of allRequestes">
+            <td> {{req.username}}</td>
+            <td> {{req.firstname}}</td>
+            <td> {{req.lastname}}</td>
+            <td> {{req.phoneNumber}}</td>
+            <td> <button (click)="accept(req.username)">Accept</button></td>
+            <td> <button (click)="deny(req.username)">Decline</button></td>
+        </tr>
+    </table>
+</div>

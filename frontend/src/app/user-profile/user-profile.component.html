@@ -1,0 +1,121 @@
+
+<div class="div-big">
+    Hello {{user.username}}
+    <br>
+    Name: {{user.firstname}} {{user.lastname}}
+    <br>
+    eMail address: {{user.email}}
+    <br>
+    Home address: {{user.address}}
+    <br>
+    Phone number: {{user.phoneNumber}}
+</div>
+
+<div class="div-big" *ngIf="currentBorrowedBooks.length == 0">
+    <h3 style="font-weight: bold;">Currenly no book is borrowed</h3>
+</div>
+<div *ngIf="currentBorrowedBooks.length > 0">
+    <h3 style="font-weight: bold;">Currently borrowed books</h3>
+    <div class="div-big" *ngIf="(currentBorrowedBooks.length > 0)">
+        <mat-card class="example-card">
+            <mat-card-title-group>
+                <img mat-card-xl-image [src]="currentBorrowedBooks[0].book.image" >
+                <mat-card-title>{{currentBorrowedBooks[0].book.name}}</mat-card-title>
+                <mat-card-subtitle>{{currentBorrowedBooks[0].book.authors}}</mat-card-subtitle>
+            </mat-card-title-group>
+            <mat-card-content>
+                <div class="div-late" *ngIf="getDateDiff(currentBorrowedBooks[0].elem.date) < 0">
+                    <i >You are {{getDateDiff(currentBorrowedBooks[0].elem.date)*-1}} days late</i>
+                </div>
+                <div *ngIf="getDateDiff(currentBorrowedBooks[0].elem.date) >= 0">
+                    You have {{getDateDiff(currentBorrowedBooks[0].elem.date)}} left to return the book
+                </div> 
+                <mat-card-actions>
+                    <button (click)="goToBook(currentBorrowedBooks[0].book.id)">Book</button>
+                    <button (click)="return(currentBorrowedBooks[0].book.id)">Return</button>
+                </mat-card-actions>           
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <div *ngIf="(currentBorrowedBooks.length > 1)">
+        <mat-card class="example-card">
+            <mat-card-title-group>
+                <img mat-card-xl-image [src]="currentBorrowedBooks[1].book.image" >
+                <mat-card-title>{{currentBorrowedBooks[1].book.name}}</mat-card-title>
+                <mat-card-subtitle>{{currentBorrowedBooks[1].book.authors}}</mat-card-subtitle>
+            </mat-card-title-group>
+            <mat-card-content>
+                <div class="div-late" *ngIf="getDateDiff(currentBorrowedBooks[1].elem.date) < 0">
+                    You are {{getDateDiff(currentBorrowedBooks[1].elem.date)*-1}} days late
+                </div>
+                <div *ngIf="getDateDiff(currentBorrowedBooks[1].elem.date) >= 0">
+                    <i>You have {{getDateDiff(currentBorrowedBooks[1].elem.date)}} left to return the book</i>
+                </div>
+            </mat-card-content>
+            <mat-card-actions>
+                <button (click)="goToBook(currentBorrowedBooks[1].book.id)">Book</button>
+                <button (click)="return(currentBorrowedBooks[1].book.id)">Return</button>
+            </mat-card-actions> 
+        </mat-card>
+    </div>
+    <div *ngIf="(currentBorrowedBooks.length > 2)">
+        <mat-card class="example-card">
+            <mat-card-title-group>
+                <img mat-card-xl-image [src]="currentBorrowedBooks[2].book.image" >
+                <mat-card-title>{{currentBorrowedBooks[2].book.name}}</mat-card-title>
+                <mat-card-subtitle>{{currentBorrowedBooks[2].book.authors}}</mat-card-subtitle>
+                
+            </mat-card-title-group>
+            <mat-card-content>
+                <div class="div-late" *ngIf="getDateDiff(currentBorrowedBooks[2].elem.date) < 0">
+                    You are {{getDateDiff(currentBorrowedBooks[2].elem.date)*-1}} days late
+                </div>
+                <div *ngIf="getDateDiff(currentBorrowedBooks[2].elem.date) >= 0">
+                    <i>You have {{getDateDiff(currentBorrowedBooks[2].elem.date)}} left to return the book</i>
+                </div>            
+            </mat-card-content>
+            <mat-card-actions>
+                <button (click)="goToBook(currentBorrowedBooks[2].book.id)">Book</button>
+                <button (click)="return(currentBorrowedBooks[2].book.id)">Return</button>
+            </mat-card-actions> 
+        </mat-card>
+    </div>
+</div>
+
+<div class="div-big">
+    <h3 style="font-weight: bold;">Borrowing history</h3>
+    <table>
+        <tr>
+            <th scope="col"><a role="button" (click)="router.navigate(['userprofile/book'])">Book</a></th>
+            <th scope="col"><a role="button" (click)="router.navigate(['userprofile/authors'])">Authors</a></th>
+            <th scope="col"><a role="button" (click)="router.navigate(['userprofile/borrowed'])">Borrowed</a></th>
+            <th scope="col"><a role="button" (click)="router.navigate(['userprofile'])">Returned</a></th>            
+            <th scope="col">Book page</th>
+        </tr>
+        <tr *ngFor="let b of sortArray()">
+            <td>
+                    {{b.book.name}}
+                    <br>
+                    <!-- <img [src]="b.book.image"> -->
+            </td>
+            <td>
+                {{b.book.authors}}
+            <td>
+                {{getDate(b.elem.dateB)}}
+            </td>
+            <td>
+                {{getDate(b.elem.dateR)}}
+            </td>
+            <td>
+                <button (click)="goToBook(b.book.id)">Go to</button>
+            </td>
+        </tr>
+    </table>
+</div>
+
+
+
+  
+
+
+  

@@ -1,0 +1,16 @@
+<form>
+<div align="central" *ngIf="renderUser()">
+    Users can hold books for {{days}} days!
+    <br>
+    New:
+        <input type="number" required  [(ngModel)] ="newDays"  name="dayaInput">
+        <br/>
+        <button (click)="changeDays()">Change</button>
+        <br>
+        {{message}}
+    </div>
+    <div *ngIf="!renderUser()">
+        <h3>Unauthorized access</h3>
+    </div>
+
+</form>

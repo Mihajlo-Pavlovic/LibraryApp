@@ -1,0 +1,101 @@
+
+<div class="div-big" align="center">
+    <img src="{{book.image}}" height="480" width="300">
+    <br>
+    Name: {{book.name}}
+    <br>
+    Authors: {{book.authors}}
+    <br>
+    Categories: {{book.category}}
+    <br>
+    Publisher: {{book.publisher}}, 
+    <br>
+    Year {{book.year}}
+    <br>
+    Count:
+    {{book.count}}
+</div>
+
+<div class="div-big" align="center">
+    <form>
+        <table align="center">
+            <tr style="text-align: center">
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+                <td>5</td>
+                <td>6</td>
+                <td>7</td>
+                <td>8</td>
+                <td>9</td>
+                <td>10</td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="radio" name="ratingform" value="1" [(ngModel)]="newRating" required>
+                </td>
+                <td>
+                    <input type="radio" name="ratingform" value="2" [(ngModel)]="newRating" required>
+                </td>
+                <td>
+                    <input type="radio" name="ratingform" value="3" [(ngModel)]="newRating" required>
+                </td>
+                <td>
+                    <input type="radio" name= "ratingform" value="4" [(ngModel)]="newRating" required>
+                </td>
+                <td>
+                    <input type="radio" name = "ratingform" value="5" [(ngModel)]="newRating" required>
+                </td>
+                <td>
+                    <input type="radio" name="ratingform" value="6" [(ngModel)]="newRating" required>
+                </td>
+                <td>
+                    <input type="radio" name="ratingform" value="7" [(ngModel)]="newRating" required>
+                </td>
+                <td>
+                    <input type="radio" name="ratingform" value="8" [(ngModel)]="newRating" required>
+                </td>
+                <td>
+                    <input type="radio" name= "ratingform" value="9" [(ngModel)]="newRating" required>
+                </td>
+                <td>
+                    <input type="radio" name = "ratingform" value="10" [(ngModel)]="newRating" required>
+                </td>
+            </tr>
+        </table>
+        <input type="submit" (click)="vote()" value="Vote" >
+        <br>
+        Book rating is: {{rating}}
+    </form>
+</div>
+<div class="div-big">
+<h3>Comments:</h3>
+<table align="center">
+    <tr *ngFor="let c of book.comments">
+        <table>
+            <tr>
+                <td style="min-width:50px">User:</td>
+                <td>Comment</td>
+            </tr>
+            <tr>
+                <td style="min-width:50px; font-style: italic" >{{c.username}}</td>
+                <td>{{c.comment}}</td>
+            </tr>
+        </table>
+    </tr>
+</table>
+<form>
+    Comment:
+    <br>
+    <textarea id="comment" name="comment" [(ngModel)]="comment" placeholder="Add comment here"></textarea>
+    <br>
+    <button (click)="addComent()" [disabled]="!canComment()">Add coment</button>
+    {{msg}}
+</form>
+</div>
+<form>
+    <div *ngIf="renderBorrow">    
+        <button (click)="borrow()">Borrow this book</button>
+    </div>
+</form>
